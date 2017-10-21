@@ -1,0 +1,61 @@
+\pagebreak
+\section{WEEK6-Normalization}
+\begin{enumerate}
+    \item What's Normalization? 
+    \begin{itemize}
+        \item Database normalization is the process of organizing the fields and tables of a relational database to minimize redundancy and dependency.
+        \item Normalization involves dividing large tables into smaller(and less redundant) tables and defining relationships between them .
+        \item The objective : Additions, deletions, and modifications of a field can be made in just one table and then propagated through the rest of the database using the defined relationships .
+    \end{itemize}
+    \item Normalization theory built around the concept of normal form.
+    \item Normal form:
+    \begin{itemize}
+        \item A relation is said to be in a particular normal form if it satisfies a certain set of constraints.
+        \item Each normal form has a set of constraints, if our follows these constraints, then our database is in that particular normal form.
+        \item there are number of normal forms 1NF, 2NF, 3NF, BCNF ,4NF.
+    \end{itemize}
+    \item Functional dependence(FD):    A functional dependency is an association between two attributes of the same relation. And in this relation one of the attributes called determinant, and other attribute is called determined.A arrow B means A functional determines B.A functionally determines B means that B = F(A)\\
+    Also A determines B == B dependent on A == A uniquely identifies B.
+    \item Three type of anomalies in DBMS when it isn't normalized.
+    \begin{itemize}
+        \item Insertion: Add a new row into DB need have all data in all non-null column.
+        \item Update: If we trying to update a item in a rows, we have to update all the raws that have same key(Otherwise the data will became inconsistent).
+        \item Deletion: If we delete one type of data, we probably will delete more data than what we trying to delete. 
+    \end{itemize}
+    \item First Normal Form(1NF): Iff every entires of relation has at most a single value.
+    \item Fully functional dependence: Y FFD on X, means Y FD on x and NOT FD on any proper subset of X.
+    \item Second Normal Form(2NF): IFf it's in 1NF and every non-key attribute is fully dependent on the primary key.
+    \item Transitive Dependency: A FD B B FD C then A FD C.
+    \item Third Normal Form(3NF): Iff it's in 2NF and Every nonprim attribute is transitively dependt on the key.
+    
+\end{enumerate}
+\section{Design Theory for Relational Databases}
+\begin{enumerate}
+    \item K is superkey for R if K fd all attribute of R
+    \item K is key if K is a superkey, but not any proper subset of K is a superkey
+    
+    \item Inference rules\begin{itemize}
+        \item Splitting rule: x 
+        \item Transitive rule
+        \item Trivial FDs
+        \item Closure
+    \end{itemize}
+    
+    \item BCNF iff for any a FD b, a is superkey
+    \item how to get BCNF: check if there is a violation\begin{itemize}
+        \item Check FD if LHS could reach all the attributes.
+    \end{itemize}
+    \item A relation with 2 attribute is automatically in BCNF.
+    \item Minimal cover\begin{enumerate}
+        \item Make RHS be single attributes
+        \item Remove extraneous attribute(on LHS)
+        \item Eliminate redundant functional dependencies
+    \end{enumerate}
+\end{enumerate}
+\section{Desired properties of normalization}
+\begin{enumerate}
+    
+    \item No redundancies and anomalies
+    \item Recoverablitiy of information
+    \item Preservation of original FD's
+\end{enumerate}

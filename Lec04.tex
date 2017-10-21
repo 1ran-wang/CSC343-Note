@@ -1,0 +1,40 @@
+\pagebreak
+\section{WEEK4-Entity Relationship Module}
+ER diagram:
+\begin{enumerate}
+    \item Entity(Rectangle): set of Attributes\\Entity sets : Collection of similar entities.\begin{itemize}
+        \item Each entity has a key(underlined)
+        \item Each attributes has a domain.
+    \end{itemize}
+    \item Attributes(Ellipses): Properties of entities.\begin{itemize}
+        \item each represents one attribute and directly connected to its entity rectangle(or a relation diamond-box).
+    \end{itemize} 
+    \item Composite attributes(Ellipses):The attribute may be composed of several
+components.\begin{itemize}
+    \item For multi-attributes, use Double ellipse.
+\end{itemize}
+    \item Relationship(diamond-shaped):\begin{itemize}
+        \item Association among two or more entities.
+        \item Can have their own attributes.
+    \end{itemize}
+    \item Degree of a relationship: In CSC343, we use arrow to refer at most one.
+    \begin{itemize}
+        \item one to one(1:1): \\Only one instance of an entity A is associated with only one instance of entity B.
+        \item one to N (1:N): \\More than one instance of an entity is associated with a relationship .its marked as 1:N, For one A entity there are 0,1 or many instance of B entities, However for one  B , there are only one instance of A entity.
+        \item N to one(N:1): \\Vice versa.
+        \item N to N: \\No limit on number of entities in both side.
+    \end{itemize}
+    \item Recursive Relationship:\\ An entity could have relation with itself(Employee and manager)
+    \item Participation Constraint:
+    \begin{itemize}
+        \item Total Participation(double line): Each entity in the entity set must participate in the relation ship.
+        \item Partial Participation(single line): May or may not participate in the relationship.
+    \end{itemize}
+    \item Weak Entity Type and Identifying Relationship:Some entity type for which key attribute cannot be defined.(Employee and dependents)
+    \begin{itemize}
+        \item represented by double rectangle.
+        \item Always total.
+        \item relation between weak entity type abd its identifying strong entity type is called identifying relationship. (double diamond).
+        \item primary key of a weak entity set formed by Strong entity set's primary key and weak set's discriminator.
+    \end{itemize}
+\end{enumerate}

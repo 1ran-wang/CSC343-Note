@@ -1,0 +1,59 @@
+\pagebreak
+\section{WEEK7-Structured Query Language(SQL)}
+\begin{enumerate}
+    \item What is SQL:\\ 
+        \begin{itemize}
+            \item High level special-purpose language for manipulating relations.
+            \item mostly a declarative language
+            \item Limted set of operations.
+            \item focus on Readability and accuracy.
+            \item important: Don't need to worry about efficiency.
+        \end{itemize}
+    \item Sub-set of SQL:\begin{itemize}
+        \item Data Manipulation Language: INSERT UPDATE SELECT and Transaction control: COMMIT ROLLBACK.
+        \item Data Definition Language: CREATE,ALTER,DROP,RENAME.
+        \item GRANT,REVOKE.
+    \end{itemize}
+    \item FROM
+    \begin{itemize}
+        \item sub-querie:Example:SELECT name FROM (SELECT name FROM B) AS bname. Rename required
+        \item Cartesian product: SELECT FROM A,B will produce a cartesian product of A,B.\begin{itemize}
+            \item which results in a huge output, not very usefull.
+        \end{itemize}
+    \end{itemize} 
+    \item JOIN
+    \begin{itemize}
+        \item NATURAL JOIN will automatically combine all the common attributes.
+        \item JOIN USING: JOIN using a single attribute. A JOIN B USING (name)
+    \end{itemize}
+    \item NULL is special: \begin{itemize}
+        \item AB are NULL: $A=B A<>B$will return False.
+        \item One of AB is NULL: $A=B A<>B$will return False.
+    \end{itemize}
+    \item OUTER JOIN: Preserves dangling tuples.(That has no matching tuples) by padding them with NULL.
+    \begin{itemize}
+        \item FULL JOIN: keep the tuples in both tables.
+        \item LEFT/RIGHT JOIN: keep the tuples in left/right table,
+        \item there is keyword INNER OUTER but you never need them.
+    \end{itemize}
+    \item Using subquery or Join will optimized into the same code by DBMS. So we just need make it more readable.
+    \item Building Boolean expression. $= <> < ,> ,<= , >=$ AND NOT OR.
+    \item NULL checking: IS NULL,IS NOT NULL
+    \item Comparison of strings: Compared lexicographical by using equation.
+    \item Comparison of dates:format:'YYYY-MM-DD'
+    special function: to\_date($'19-02-1995','DD-MM-YYYY'$)
+    \item parttern\begin{itemize}
+        \item LIKE/NOT LIKE + Quoted string: \% means anystring. \_means any character.
+        \item apostrophe: Two consecutive apostrophes represent one apostrophe and not the end of the string.
+        \item Custom escape character: s LIKE 'a121a122a1a2' ESCAPE'a'
+    \end{itemize}
+    \item condition involving list, WHERE a IN (a,b,c)
+    \item Subquery\begin{itemize}
+        \item if the inner has only one item.You can use it as a value!
+        \item otherwise, you have to use ALL/ANY to make it compare to all or any of the inner list.
+    \end{itemize}
+    \item ANY ALL IN is easy to understand
+    \item EXISTS: the sub-query has at least 1 value(i.e. not empty)
+    \item SELECT DISTINCT: consider 2 null values are same.
+    \item ORDER BY: put thples in order, default ascending [DESC]will overwrite it into descending.\\TOP-N: at very last.LIMIT N
+\end{enumerate}

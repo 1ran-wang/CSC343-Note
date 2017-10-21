@@ -1,0 +1,34 @@
+\pagebreak
+\section{WEEK2-Relation Model}
+\begin{enumerate}
+\item[0.] Relational Integrity Constraints:\\
+• Constraints are conditions that must hold on all
+valid relation instances. There are three main types
+of constraints:
+    \begin{enumerate}
+        \item Key constraints
+        \item Entity integrity constraints
+        \item Referential integrity constraints
+    \end{enumerate}
+    \item Key
+    \begin{itemize}
+        \item Super Key: Is a key that Unique in a relation.
+        \item Key: Minimal super key.
+        \item Candidate Key:\begin{itemize}
+            \item Uniqueness: There are no two tuple in R has same candidate key value. 
+            \item Inreducibility: There are no subkey has uniqueness.
+        \end{itemize}
+        
+        \item Primary Key: It's candidate key that not null.
+        \item Alternate Key: Candidate keys which are not chosen as the primary key are the Alternate Keys.
+        \item Foreign Key: Refer to another table's primary key.(Otherwise its Null) Normally use to link two table together.
+    \end{itemize}
+    \item Entity Integrity :\\
+• This rule states that in a relation, value of attribute of
+a primary key cannot be null.
+    \item Referential Integrity:\\
+• It states that, if a foreign key exists in a relation,
+either the foreign key value must match a primary key
+value of some tuple in its home relation or must be
+wholly null
+\end{enumerate}

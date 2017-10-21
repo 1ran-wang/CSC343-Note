@@ -1,0 +1,39 @@
+\pagebreak
+\section{WEEK10 - Transaction Management}
+\begin{enumerate}
+    \item Consistent State: Satisifies all constraints
+    \item Consistent DB: Database in consistent state.
+    \item Because We update values one by one, So DB will became Inconsistent state in a mid of a Transaction.
+    \item Consquently: We want our DB can submit multiple queries at same time.
+    \item Serially: Execute them in FIFO basis.
+    \item Transaction:\begin{enumerate}
+        \item It's a set of changes that must be made all together as a single unit.It will start from a consistent state into another consistent state.
+        \item End of a transaction, the transaction will ends when one of following occours:\begin{enumerate}
+            \item A COMMIT/ ROLLLBACK are issured
+            \item A DLL(CREATE,ALTER,DROP) or DCL(GRANT,REVOKE) statement is issued.
+            \item A user properly exits(COMMIT)
+            \item System crashes (ROLLBACK)
+        \end{enumerate}
+        \item COMMIT and ROLLBACK: COMMIT means this modification are now permanent in the database
+        \item ROLLBACK means this transaction is aborted. (Any system falures will cause rollback even if the programmer didn't request it.)
+        \item Atomicity of Transaction: A transaction is said to be atomic if a transaction always executes all its acions in one step or not executes any actions at all.
+        \item Consistency: Ensuring consistency for an individual transaction
+is the responsibility of the application
+programmer who codes the transaction.
+        \item Isolation: If several transactions are executed
+concurrently, then each transaction must
+behave as if it was executed in isolation.
+        ,One of the solution is execute each transaction serially, But it's time wasting and stupid.
+        \item Durability
+        \item Overwriting Uncommitted Data : second write transaction will overwrite the first one. (Write-write conflict)
+        \item Reading Uncommitted data: Reads a dirty data(Write-read conflict)
+        \item Unrepeatable reads: Overwrite the data between two reads(Read-Write conflict.
+        \item Locking techniques:
+        \begin{enumerate}
+            \item What is a lock? A variable to describe the status of the item with respect to possible operations that can be applied to it.
+            \item Binary locks: That has only 2 status Locked or Unlocked. If LOCK(A) = 1, means its busy now, transaction have to wait. If LOCK(A) = 0 means free now. Before any transaction, you need set lock into 1 and set it back when you are done (Just like public bathroom)
+            \item Shared/Exclusive Locks: Serveral transactions are able to acess the same item if they just trying to read the data, but only obe transaction are able to write (Which has exclusive access)
+            \item  lock-S(A), lock-X(A), unlock(A) for Shared/Exclusive Locks, s means read lock, x means full lock.
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}

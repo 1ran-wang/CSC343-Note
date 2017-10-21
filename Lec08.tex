@@ -1,0 +1,54 @@
+\pagebreak
+\section{WEEK8-More on SQL}
+ 
+\begin{enumerate}
+    \item Aggregation operators\begin{enumerate}
+        
+    \item What's Aggregation operators: Operations that apply to entire columns and produce a single result.
+    \item Covered in this course: Grouping Operator： AVG() COUNT() MIN() MAX() SUM().
+    \item GROUP BY : \begin{itemize}
+        \item followed SFW
+        \item Result will be grouped by the values of attributes in GROUP BY. All the AGG will only apply to each group of data.
+    \end{itemize}
+    \item If using any Aggregation, all the elements must be Aggregated or An attribute on the GROUP BY list.
+    \item HAVING ：Same as WHERE but let you decide which groups to keep. (the attribute in HAVING must be either a grouping attribute or aggregated attribute
+    \item NULL: NULL values are not contributes to a sum average or count and never be the min or max unless all values are NULL.
+    \item which means, if a aggregation is apply to all NULL values then the result will be NULL, except COUNT will be zero.
+    \item DISTINT: DISTINT will be proceed before the aggregation!.
+    \end{enumerate}
+    \item BAG and SET \begin{enumerate}
+    \item UNION INTERSECT EXCEPT: have to use Bracket between two queries.
+    \item force to SET: using DISTINT will force the result became a SET.(SELECT DISTINCT)
+    \item  Rules for set:
+    \begin{itemize}
+        \item UNION: A UNION B A + B without any duplicates
+        \item INTERSECTION: A INTERSECT B common elements in both A and B
+        \item EXCEPT: A EXCEPT B elements that in  not in B
+    \end{itemize}
+    
+    \item force to BAG: using ALL will force the result became a BAG.(SELECT (a) UNION ALL (b))
+    \item Rules for bag:
+    \begin{itemize}
+        \item UNION: A UNION B All elements in A and in B WITH duplicates
+        \item INTERSECTION: A INTERSECT B common elements with minimum number in each of subquery
+        \item EXCEPT: A EXCEPT B A-B the number of elements will never goes to negative.
+        \item to sum up: When you consider about bag, just think that elements with same value are difference.
+    \end{itemize}
+    \end{enumerate}
+    \item Database Modifications:
+    \begin{enumerate}
+        \item Insert \begin{itemize}
+            \item INSERT INTO Target relation) values;
+            \item values could be a result of a query.
+            \item Date insertion: \begin{itemize}
+                \item Default format: 'YYYY-MM-DD'
+                \item Format that also works: 'DD-Mon-YYYY'
+                \item TO\_DATA(str,format)
+            \end{itemize}
+        \end{itemize}
+        \item Deletetion:
+            DELETE FROM (Relation) WHERE (Condition)
+        \item Update: UPDATE (relation) SET a=a b=b c=c WHERE (Conditions).
+    \end{enumerate}
+    
+\end{enumerate}

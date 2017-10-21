@@ -1,0 +1,82 @@
+\pagebreak
+\section{WEEK9-More on SQL 2}
+
+
+\begin{enumerate}
+    \item Constraints \begin{itemize}
+        \item a data type to limit the kind of data.
+        \item 2 type of constraints\begin{itemize}
+            \item Refrential constraints: PRIMARY KEY, FOREIGN KEY.
+            \item Value constraints: NULL UNIQUE CHECK
+        \end{itemize}
+        \item PRIMARY KEY：\begin{itemize}
+            \item could be defined in two ways \begin{itemize}
+                \item title CHAR(40) PRIMARY KEY.
+                \item PRIMARY KEY (title, year)
+            \end{itemize}
+        \end{itemize}
+        \item Foreign keys: \begin{itemize}
+            \item In relational model tables are  related to each other throught common column.
+            \item A column in one table is a Primary key of this table iff its value uniquely identifies each tuple. Such table is called a parent table.
+            \item A culumn in another table that reference a primary key column in the parent table is know as a foreign key. this table is called a child table.
+            \item Example a INT REFRENCES SOMETABLE(a)
+            
+            \item Self relationships: mngno INT NOT NULL REFRENCES empno
+            \item Foreign key has to exist in parent table's primary key,NULL is acceptable unless we say no(add NOT NULL ).
+            \item any deletion or update to Parent table that will cause Foreign key change, need handle in three way:\begin{enumerate}
+                \item Default: Reject the modification
+                \item Cascade: Deleted: deleted the value in child as well. Update: change values in Child.
+                \item Set NULL Change the value in child into NULL
+                \item Syntax: ON [DELETE,UPDATE] [SET NULL, CASCADE]
+            \end{enumerate}
+        \end{itemize}
+        \item Value Constraints: \begin{itemize}
+            \item Define if NULL is disallowed\\ A numeric NOT NULL\\ can be alerted with ALTER TABLE ABC ALTER COLUMN A DROP NOT NULL.
+            \item Define if UNIQUE values are required\\ A NUMERIC UNIQUE \\ Nulls are still allowed to inserted multiple times. But combination with NULL and NOT NULL values are disallowed to be duplicated.
+            \item Define CHECK for a set of values.\\ CONSTRAINT cname CHECK condition\\CHECK (condition)
+        \end{itemize}
+    \end{itemize}
+    \item Views
+    \begin{itemize}
+        \item What is view: View is a virtual table, A relation definition of other tables.
+        \item It takes a little space to store, because it only contains the definitions.
+        \item The table that really stored values called base table.
+        \item Syntax: CRATE VIEW name AS (Query)
+        \item you can query it as a relation.
+        \item Most of views are not modifiable. However there exist updateable views.
+        \item insertion: If you want to update a new value into a updateable view, you have to  fill the other attributes out with NULL or
+the default, and have a tuple that will yield the valid
+insertion into ,and also it has to meet the condition in WHERE.
+    \end{itemize}
+    \item Triggers
+    \begin{itemize}
+        \item What's a trigger: A procedure that is fired when an INSERT DELETE UPDATE statement is issued.
+        \item usage \begin{enumerate}
+            \item To enforce complex integrity constraints
+            \item To enforce complex business rules
+            \item To customize complex security authorizations
+        \end{enumerate} 
+        \item Parts of a trigger:\begin{enumerate}
+            \item Triggering event: INSERT DELETE or UPDATE
+            \item Trigger Constraint : A Boolean expression that must be true for the trigger to fire. Using WHEN
+            \item Trigger Action : SQL statements to be executed when trigger fired.
+        \end{enumerate}
+        \item Type of Triggers\begin{enumerate}
+            \item Row level Triggers: Execute once for each row in a transaction. Will executed on all rows that affected by the command that enables the trigger.(When no rows affected, the trigger is not executed at all.)
+            \item Statement level Triggers: Exectued only once for each statement.They are default types of trigger created via the CREATE TRIGGER command.
+            \item Before Triggers:BEFORE trigger execute the trigger action before the triggering statement, It can eliminate useless statement.
+            \item After Triggers: AFTER trigger executes the trigger action after the triggering statement is executed.
+        \end{enumerate}
+        \item Syntax of trigger: 
+        \\ CREATE OR REPLACE TRIGGER PriceTrig\\AFTER UPDATE OF price ON Sells \\FOR EACH ROW WHEN(new.price > old.price + 1.00) \\BEGIN \\INSERT INTO RupoffBars\\VALUES(new.bar)\\END;
+        \item Options\begin{enumerate}
+            \item FOR EACH ROW: add this means this is a row level triggers
+            \item AFTER/BEFORE ... UPDATE/DELETE/INSERT ON ....(UPDATE...OF...)
+            \item ROW-level: INSERT: new DELETE: old UPDATE new/old can use them in a WHEN clause
+            \item The Condition IF. THEN .. END IF
+            \item The Action: BEGIN...END
+        \end{enumerate}
+
+    \end{itemize}
+    \item Transaction management.
+\end{enumerate}
