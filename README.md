@@ -1,4 +1,4 @@
-# CSC343-Note
+# CSC343-Note (Introduction to Databases)
 
 ## Description
 - This is my note for CSC343 Database courses. (In UofT) You can use it, but it's at your own risk.、
